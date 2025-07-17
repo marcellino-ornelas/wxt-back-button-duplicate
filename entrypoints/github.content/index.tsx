@@ -16,6 +16,7 @@ export default defineContentScript({
       },
       onRemove: (elements) => {
         elements?.root.unmount();
+        elements?.container.remove();
       },
     });
 
