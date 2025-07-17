@@ -15,17 +15,22 @@ export default defineContentScript({
         return { root, container };
       },
       onRemove: (elements) => {
+        // remove react
         elements?.root.unmount();
+        // remove container
         elements?.container.remove();
       },
     });
 
     const mountUi = () => {
+      // Remove Ui if mounted else autoMount will failure due to react error
       if (ui.mounted) ui.remove();
+       // autoMount just in case element is not present
       ui.autoMount();
     };
 
     ctx.addEventListener(window, "wxt:locationchange", () => {
+      // rerender element when FE changes else element will not be shown anymore
       mountUi();
     });
 
