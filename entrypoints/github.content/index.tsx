@@ -22,7 +22,7 @@ export default defineContentScript({
 
     const mountUi = () => {
       if (ui.mounted) ui.remove();
-      ui.autoMount();
+      ui.mount();
     };
 
     ctx.addEventListener(window, "wxt:locationchange", () => {
